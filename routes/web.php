@@ -274,3 +274,31 @@ Route::get('reports.sla', [SLAReportController::class, 'slareport'])->name('repo
 
 Route::get('reports/agentreports', [AgentReportController::class, 'index'])->name('reports.agentreports');
 Route::get('reports.agent', [AgentReportController::class, 'agentreport'])->name('reports.agent');
+
+Route::get('agent-report/download/{id}/{type}', [AgentReportController::class, 'download'])
+    ->name('agent.download');
+
+Route::get('sla-report/download/{id}/{type}', [SLAReportController::class, 'download'])
+    ->name('sla.download');
+
+Route::get('customer-report/download/{id}/{type}', [CustomerReportController::class, 'download'])
+    ->name('customer.download');
+
+Route::get('ticket-report/download/{id}/{type}', [TicketReportController::class, 'download'])
+    ->name('ticket.download');
+
+// Route::get('reports/download/{id}/{type}', [AgentReportController::class, 'download'])
+//     ->name('reports.download');
+
+
+// Route::get('reports/download/{id}/{type}', [SLAReportController::class, 'download'])
+//     ->name('reports.download');
+
+// Route::get('reports/download/{id}/{type}', [CustomerReportController::class, 'download'])
+//     ->name('reports.download');
+
+// Route::get('reports/download/{id}/{type}', [TicketReportController::class, 'download'])
+//     ->name('reports.download');
+
+// Route::get('reports/download/{id}/excel', [AgentReportController::class, 'downloadExcel']);
+// Route::get('reports/download/{id}/csv', [AgentReportController::class, 'downloadCsv']);

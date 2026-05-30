@@ -114,11 +114,11 @@
 
         </style>
 
-        <h1>📊 Daily Report Dashboard</h1>
+        <h1>Daily Report Dashboard</h1>
 
         <div class="card">
 
-            <h2 class="section-title">👨‍💻 Agent Performance</h2>
+            <h2 class="section-title">Agent Performance</h2>
 
             <table>
 

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade\Pdf;    //generate pdf for blade view 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
@@ -28,18 +28,18 @@ class AgentReportCommand extends Command
                 }
             ])->get();
 
-        //    $content = view('reports.agent', compact('agents'))->render();
+        $content = view('reports.agent', compact('agents'))->render();
 
-        //$filename = "reports/agentreport_" . now()->format('Y_m_d') . ".html";
+        $filename = "reports/agentreport_" . now()->format('Y_m_d');
 
-        //  Storage::disk('public')->put($filename, $content);
+        Storage::disk('public')->put($filename, $content);
 
 
-        $pdf = Pdf::loadview('reports.agent', compact('agents'));
-        $filename = "reports/agentreport_" . now()->format('Y_m_d') . ".pdf";
+        // $pdf = Pdf::loadview('reports.agent', compact('agents'));
+        // $filename = "reports/agentreport_" . now()->format('Y_m_d') . ".pdf";
 
-        Storage::disk('public')->put($filename, $pdf->output()); //convert pdf object in binary pdf        
-        // file override if exits else create new             
+        // Storage::disk('public')->put($filename, $pdf->output()); //convert pdf object in binary pdf        
+        // file overwritten if exits else create new             
 
         AgentReport::updateOrCreate(
             [

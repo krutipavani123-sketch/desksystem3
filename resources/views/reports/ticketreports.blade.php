@@ -117,14 +117,28 @@ body {
 
                                 <td class="d-flex gap-2">
 
+                                     <td class="d-flex gap-2">
+
+                                    <a href="{{ asset('storage/'.$report->file_path) }}" target="_blank"
+                                    class="action-btn text-success"
+                                    title="View">
+                                <i class="bi bi-eye"></i></a>
+
+
+                                <button class="action-btn text-primary"
+                                data-bs-toggle="modal"   {{-- open popoup bootstrap attribute open/close --}}
+                                data-bs-target="#download{{ $report->id }}" title="Download"> {{-- which open that decide  --}}
+                            <i class="bi bi-download"></i></button>
+
+
                                     <!-- generate full public url , open new tab-->
-                                    <a href="{{ asset('storage/' . $report->file_path) }}"
+                                    {{-- <a href="{{ asset('storage/' . $report->file_path) }}"
                                        target="_blank"
                                        class="action-btn text-primary"
                                        title="Download Report">
 
                                         <i class="bi bi-download"></i>
-                                    </a>
+                                    </a> --}}
 
                                 </td>
                             </tr>
@@ -138,6 +152,39 @@ body {
                     </tbody>
 
                 </table>
+
+
+                @foreach($reports as $report)
+<div class="modal fade" id="download{{ $report->id }}"> <!-- popup -->
+    <div class="modal-dialog"> <!--define width nd center layout  -->
+        <div class="modal-content">   <!-- main content -->
+            <div class="modal-header">
+                <h5>Select Download Type</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button> <!-- when click close -->
+            </div>
+
+            <div class="modal-body"> <!-- show option -->
+
+                <a href="{{ asset('storage/'. $report->file_path) }}" 
+                    class="btn w-50 mb-2"> 
+                    Download PDF
+                </a>
+
+                <a href="{{ url('ticket-report/download/'.$report->id.'/excel') }}" class="btn w-50 mb-2">
+                    Download Excel
+                </a>
+
+                <a href="{{ url('ticket-report/download/'.$report->id.'/csv') }}" class="btn w-50">
+                    Download CSV
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@endforeach
+
             </div>
 
         </div>

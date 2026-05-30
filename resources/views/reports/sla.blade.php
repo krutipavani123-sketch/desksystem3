@@ -114,11 +114,11 @@
 
         </style>
 
-        <h1>📊 Daily Report Dashboard</h1>
+        <h1>Daily Report Dashboard</h1>
 
         <div class="card">
 
-            <h2 class="section-title">⏱ SLA Report</h2>
+            <h2 class="section-title"> SLA Report</h2>
 
             <div class="summary-grid">
 

@@ -113,12 +113,12 @@
 
         </style>
 
-        <h1>📊 Daily Report Dashboard</h1>
+        <h1> Daily Report Dashboard</h1>
    <div class="card">
   
 <div class="card">
 
-            <h2 class="section-title">👤 Customer Report</h2>
+            <h2 class="section-title"> Customer Report</h2>
 
             <table>
 

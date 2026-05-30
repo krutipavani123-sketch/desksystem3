@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\slaReport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\slaReportExport;
 
 class SLAReportController extends Controller
 {
@@ -31,5 +33,32 @@ class SLAReportController extends Controller
 
         $slaOk = Ticket::where('status', 'Closed')->count();
         return view('reports.sla', compact('slabreached', 'slaOk'));
+    }
+
+    public function download($id, $type)
+    {
+        $report = slaReport::findOrFail($id);
+
+        if ($type == 'pdf') {
+            return response()->file(
+                storage_path('app/public/' . $report->file_path)
+            );
+        }
+
+        if ($type == 'excel') {
+            return Excel::download(
+                new slaReportExport($report->id),
+                'sla_report_' . now()->format('Y_m_d_H_i_s') . '.xlsx'
+            );
+        }
+
+        if ($type == 'csv') {
+            return Excel::download(
+                new slaReportExport($report->id),
+                'sla_report_' . now()->format('Y_m_d_H_i_s') . '.csv',
+                \Maatwebsite\Excel\Excel::CSV
+            );
+        }
+        abort(404);
     }
 }

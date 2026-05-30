@@ -96,7 +96,7 @@
     <!-- HEADER -->
     <div class="header">
         <div>
-            <h1>📊 Ticket Report Dashboard</h1>
+            <h1> Ticket Report Dashboard</h1>
             <span>System performance overview</span>
         </div>
     </div>
